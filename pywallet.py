@@ -73,6 +73,7 @@ import unittest
 
 from datetime import datetime
 from subprocess import *
+from Crypto.Hash import RIPEMD
 
 import os
 import os.path
@@ -1336,7 +1337,7 @@ def i2o_ECPublicKey(pkey, compressed=False):
 # bitcointools hashes and base58 implementation
 
 def hash_160(public_key):
-	md = hashlib.new('ripemd160')
+	md = RIPEMD.new('ripemd160')
 	md.update(hashlib.sha256(public_key).digest())
 	return md.digest()
 
